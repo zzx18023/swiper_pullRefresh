@@ -1,0 +1,95 @@
+.swiper-pullRefresh .swiper-slide {
+	height: auto;
+}
+
+.swiper-pull-top-pocket,
+.swiper-pull-bottom-pocket {
+	width: 100%;
+	height: 50px;
+	/*min-height: 50px;*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 15px;
+	color: #777;
+	font-weight: bold;
+}
+
+.swiper-pull-top-pocket {
+	visibility: hidden;
+}
+
+.swiper-pull-bottom-pocket {
+	position: initial;
+}
+
+.swiper-pull {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.swiper-pull-icon {
+	width: 24px;
+	height: 24px;
+	line-height: 24px;
+	text-align: center;
+	background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 120 120"><polygon fill="#6C6C6C" points="60,13 38.3,50.5 81.7,50.5" /><rect fill="#6C6C6C" x="52.5" y="50" width="15" height="51" /></svg>');
+	transition: transform .3s ease-in;
+}
+
+.swiper-pull-top-pocket .swiper-pull-icon {
+	transform: rotateZ(-180deg);
+}
+
+.swiper-pull-top-pocket.loading .swiper-pull-icon,
+.swiper-pull-bottom-pocket.loading .swiper-pull-icon {
+	background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 120 120"><defs><line id="l" x1="60" x2="60" y1="7" y2="27" stroke="#6c6c6c" stroke-width="11" stroke-linecap="round"/></defs><g><use xlink:href="#l" opacity=".27"/><use xlink:href="#l" opacity=".27" transform="rotate(30 60,60)"/><use xlink:href="#l" opacity=".27" transform="rotate(60 60,60)"/><use xlink:href="#l" opacity=".27" transform="rotate(90 60,60)"/><use xlink:href="#l" opacity=".27" transform="rotate(120 60,60)"/><use xlink:href="#l" opacity=".27" transform="rotate(150 60,60)"/><use xlink:href="#l" opacity=".37" transform="rotate(180 60,60)"/><use xlink:href="#l" opacity=".46" transform="rotate(210 60,60)"/><use xlink:href="#l" opacity=".56" transform="rotate(240 60,60)"/><use xlink:href="#l" opacity=".66" transform="rotate(270 60,60)"/><use xlink:href="#l" opacity=".75" transform="rotate(300 60,60)"/><use xlink:href="#l" opacity=".85" transform="rotate(330 60,60)"/></g></svg>');
+	animation: spinner-spin 1s step-end infinite;
+}
+
+@keyframes spinner-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	8.33333333% {
+		transform: rotate(30deg);
+	}
+	16.66666667% {
+		transform: rotate(60deg);
+	}
+	25% {
+		transform: rotate(90deg);
+	}
+	33.33333333% {
+		transform: rotate(120deg);
+	}
+	41.66666667% {
+		transform: rotate(150deg);
+	}
+	50% {
+		transform: rotate(180deg);
+	}
+	58.33333333% {
+		transform: rotate(210deg);
+	}
+	66.66666667% {
+		transform: rotate(240deg);
+	}
+	75% {
+		transform: rotate(270deg);
+	}
+	83.33333333% {
+		transform: rotate(300deg);
+	}
+	91.66666667% {
+		transform: rotate(330deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

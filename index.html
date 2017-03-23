@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Document</title>
+		<script src="js/swiper-3.4.1.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.4.1.css" />
+
+		<script src="js/swiper_pullRefresh.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="css/swiper_pullRefresh.css" />
+
+		<style type="text/css">
+			html,
+			body {
+				height: 100%;
+			}
+
+			html {
+				box-sizing: border-box;
+			}
+
+			*,
+			*:before,
+			*:after {
+				box-sizing: inherit;
+				margin: 0;
+				padding: 0;
+			}
+
+			li {
+				list-style: none;
+			}
+
+			.swiper-pullRefresh {
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div class="swiper-container swiper-pullRefresh" id="pullRefresh0">
+
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<div class="swiper-pullRefresh-body">
+						<!--body-->
+					</div>
+				</div>
+			</div>
+
+			<!--进度条-->
+			<div class="swiper-scrollbar"></div>
+		</div>
+
+		<script>
+			var data = function() {
+				var i = 0;
+				return {
+					next: function() {
+						if((i++) < 3) {
+
+							var text = '';
+							for(let i = 0; i < 100; i++) {
+								for(let i = 0; i < Math.random() * 10 + 3; i++) {
+									text += String.fromCharCode(97 + Math.ceil(Math.random() * 25));
+								};
+								text += ' ';
+							};
+
+							return {
+								//value: '<div>' + text + '</div>',
+								value: text,
+							};
+						} else {
+							return {
+								done: true,
+							};
+						};
+					},
+				};
+			};
+			var getdata = data(); //迭代器
+
+			var myRefresh0 = SwiperRefresh('#pullRefresh0', {
+				scrollbar: '.swiper-scrollbar', //进度条
+				down: {
+					auto: false,
+					callback: function(swiper) {
+						console.log('触发刷新');
+						setTimeout(function(swiper) { //延时模拟异步
+							getdata = data(); //重置迭代器
+							var thisData = getdata.next();
+							swiper.slides.find('.swiper-pullRefresh-body').html(thisData.value + '');
+							swiper.endPulldownToRefresh();
+							swiper.refresh();
+						}, 1000, swiper);
+					},
+				},
+				up: {
+					auto: true,
+					callback: function(swiper) {
+						console.log('触发加载');
+						setTimeout(function(swiper) { //延时模拟异步
+							var thisData = getdata.next();
+							swiper.slides.find('.swiper-pullRefresh-body').append(thisData.value + '');
+							swiper.endPullupToRefresh(thisData.done);
+						}, 1000, swiper);
+					},
+				},
+			});
+		</script>
+	</body>
+
+</html>
