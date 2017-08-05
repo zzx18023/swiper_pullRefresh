@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>swiper下拉刷新</name>
+	<name>swiper_pullRefresh</name>
 	<comment>Create By HBuilder</comment>
 	<projects>
 	</projects>
@@ -22,7 +22,7 @@
 	</natures>
 	<filteredResources>
 		<filter>
-			<id>1489990545808</id>
+			<id>0</id>
 			<name></name>
 			<type>10</type>
 			<matcher>
@@ -40,7 +40,7 @@
 			</matcher>
 		</filter>
 		<filter>
-			<id>1490233970289</id>
+			<id>0</id>
 			<name></name>
 			<type>26</type>
 			<matcher>
